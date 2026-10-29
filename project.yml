@@ -1,0 +1,27 @@
+# Proyecto para compilar en GitHub Actions con XcodeGen (ver .github/workflows/build_ios.yml)
+name: OllaYMercado
+options:
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  OllaYMercado:
+    type: application
+    platform: iOS
+    sources:
+      - Sources/OllaYMercado
+      - Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.manuelsalazar.ollaymercado
+        PRODUCT_NAME: OllaYMercado
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "Olla y Mercado"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO

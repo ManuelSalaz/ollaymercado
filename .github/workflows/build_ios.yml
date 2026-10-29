@@ -1,0 +1,49 @@
+name: Build iOS IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Generar proyecto de Xcode
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Compilar para iOS (sin firma previa)
+        run: |
+          xcodebuild -project OllaYMercado.xcodeproj -scheme OllaYMercado \
+            -sdk iphoneos -configuration Release -derivedDataPath build \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO build
+
+      - name: Empaquetar archivo .ipa
+        run: |
+          mkdir -p Payload
+          cp -r build/Build/Products/Release-iphoneos/OllaYMercado.app Payload/
+          zip -r OllaYMercado.ipa Payload
+
+      - name: Subir artefacto .ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: ollaymercado-ios
+          path: OllaYMercado.ipa
+
+      - name: Publicar Release automático con el .ipa
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-ios
+          name: Olla y Mercado iOS
+          files: OllaYMercado.ipa
+          prerelease: false

@@ -16,7 +16,7 @@ struct Item: Sendable {
     let prot: Double
     let section: String
     let store: Store
-    /// true = precio tomado de losprecios.co; false = estimado
+    /// true = precio real tomado de la app de ARA; false = estimado (D1 u otra fuente)
     let verified: Bool
 }
 
@@ -62,7 +62,7 @@ struct Recipe: Identifiable, Sendable {
 }
 
 enum Catalog {
-    static let pricesDate = "29 oct 2026"
+    static let pricesDate = "29 oct 2026 (app de ARA)"
 
     static let days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 
@@ -77,36 +77,37 @@ enum Catalog {
              prot: prot, section: section, store: store, verified: verified)
     }
 
+    // Precios reales de la app de ARA (29 oct 2026). Los de D1 quedan como estimados
+    // porque ARA no vende esos productos (lentejas, avena barata, maní, fríjol en lata).
     static let items: [String: Item] = {
         let list: [Item] = [
-            it("huevos", "Huevos A rojos Del Canasto", "und", 30, "panal x30", 7800, 72, 6.3, "Huevos y lácteos", .ara),
-            it("leche", "Leche entera De la Cuesta", "ml", 1100, "bolsa 1,1 L", 1850, 0.62, 0.032, "Huevos y lácteos", .ara),
-            it("yogur", "Yogur griego natural Alpina", "g", 150, "vaso 150 g", 2550, 0.9, 0.07, "Huevos y lácteos", .ara),
-            it("queso", "Queso campesino Colanta", "g", 250, "bloque 250 g", 4200, 3.0, 0.18, "Huevos y lácteos", .ara),
-            it("arroz", "Arroz Del Costal", "g", 1000, "bolsa 1 kg", 3400, 3.6, 0.07, "Despensa", .ara),
-            it("lentejas", "Lentejas Del Costal", "g", 500, "bolsa 500 g", 1900, 3.5, 0.24, "Despensa", .ara),
-            it("avena", "Avena en hojuelas Fit Graan", "g", 250, "bolsa 250 g", 1400, 3.8, 0.13, "Despensa", .d1),
-            it("pasta", "Espaguetis Doria", "g", 500, "paquete 500 g", 1450, 3.6, 0.12, "Despensa", .ara),
-            it("mani", "Mantequilla de maní Mash", "g", 227, "frasco 227 g", 5990, 5.9, 0.25, "Despensa", .d1),
-            it("manis", "Maní salado Tote", "g", 175, "bolsa 175 g", 3200, 5.9, 0.25, "Despensa", .ara),
-            it("aceite", "Aceite de soya Olisun", "ml", 900, "botella 900 ml", 4350, 8.8, 0, "Despensa", .ara),
-            it("atun", "Atún en agua Costa Blanca", "lata", 1, "lata 170 g", 3300, 150, 30, "Enlatados", .ara),
-            it("sardinas", "Sardinas en tomate Bocado de Mar", "lata", 1, "lata 425 g", 3950, 680, 72, "Enlatados", .ara),
-            it("frijolata", "Fríjoles con tocino Cheflisto", "lata", 1, "lata 320 g", 2400, 400, 19, "Enlatados", .ara),
-            it("pollo", "Pechuga de pollo en trocitos Brasset", "g", 500, "bandeja 500 g", 9990, 1.2, 0.23, "Carnes", .d1),
-            it("carne", "Carne de cerdo molida Ara", "g", 500, "bandeja 500 g", 5650, 2.6, 0.17, "Carnes", .ara),
-            it("pan", "Pan blanco tajado Ara", "tajada", 22, "bolsa 550 g (≈22 tajadas)", 2150, 65, 2.3, "Panadería", .ara),
-            it("arepas", "Arepas blancas Arepas de mi Casa", "und", 8, "paquete 400 g (≈8)", 950, 110, 2.5, "Panadería", .ara),
-            it("tortillas", "Tortillas Camote", "und", 8, "paquete 300 g (≈8)", 3250, 110, 3, "Panadería", .ara),
-            it("verduras", "Vegetales mixtos congelados Calypso", "g", 500, "bolsa 500 g", 3500, 0.5, 0.025, "Congelados", .ara),
-            it("banano", "Banano", "und", 1, "unidad", 500, 105, 1.3, "Fruver", .ara, false),
-            it("platano", "Plátano maduro", "und", 2, "medio kilo (≈2)", 1800, 300, 3, "Fruver", .ara),
-            it("papa", "Papa", "g", 2000, "bolsa 2 kg", 2900, 0.77, 0.02, "Fruver", .ara),
-            it("tomate", "Tomate", "g", 500, "medio kilo", 2400, 0.18, 0.009, "Fruver", .ara),
-            it("cebolla", "Cebolla blanca", "g", 500, "medio kilo", 2800, 0.4, 0.011, "Fruver", .ara),
-            it("zanahoria", "Zanahoria", "g", 500, "medio kilo", 1500, 0.4, 0.009, "Fruver", .ara, false),
-            it("aguacate", "Aguacate", "und", 1, "unidad", 3500, 240, 3, "Fruver", .ara, false),
-            it("limon", "Limón", "und", 10, "medio kilo (≈10)", 4000, 15, 0.3, "Fruver", .ara),
+            it("huevos", "Huevos tipo A (cubeta x30)", "und", 30, "cubeta x30", 13990, 72, 6.3, "Huevos y lácteos", .ara),
+            it("leche", "Leche entera Betania", "ml", 900, "bolsa 900 ml", 4450, 0.62, 0.032, "Huevos y lácteos", .ara),
+            it("yogur", "Yogurt entero Colfrance", "ml", 1000, "bolsa 1 L", 6990, 0.62, 0.032, "Huevos y lácteos", .ara),
+            it("queso", "Queso blanco Colanta", "g", 250, "bloque 250 g", 8590, 3.0, 0.18, "Huevos y lácteos", .ara),
+            it("arroz", "Arroz Del Costal", "g", 450, "bolsa 450 g", 1400, 3.6, 0.07, "Despensa", .ara),
+            it("lentejas", "Lentejas El Estío (D1)", "g", 500, "bolsa 500 g", 2850, 3.5, 0.24, "Despensa", .d1, false),
+            it("avena", "Avena en hojuelas Fit Graan (D1)", "g", 250, "bolsa 250 g", 1400, 3.8, 0.13, "Despensa", .d1, false),
+            it("pasta", "Espagueti Puglieri", "g", 400, "paquete 400 g", 2690, 3.6, 0.12, "Despensa", .ara),
+            it("mani", "Mantequilla de maní Mash (D1)", "g", 227, "frasco 227 g", 5990, 5.9, 0.25, "Despensa", .d1, false),
+            it("manis", "Maní salado Tote", "g", 175, "bolsa 175 g", 6990, 5.9, 0.25, "Despensa", .ara),
+            it("aceite", "Aceite vegetal Sonelo", "ml", 900, "botella 900 ml", 8990, 8.8, 0, "Despensa", .ara),
+            it("atun", "Atún lomos Costa Blanca", "lata", 1, "lata 170 g", 5950, 190, 40, "Enlatados", .ara),
+            it("sardinas", "Sardina Costa Blanca", "lata", 1, "lata 120 g", 6990, 250, 28, "Enlatados", .ara),
+            it("frijolata", "Fríjoles con tocino Cheflisto (D1)", "lata", 1, "lata 320 g", 2400, 400, 19, "Enlatados", .d1, false),
+            it("pollo", "Pechuga de pollo", "g", 500, "bandeja 500 g", 8475, 1.2, 0.23, "Carnes", .ara),
+            it("pan", "Pan tajado blanco Amapan", "tajada", 18, "bolsa 450 g (≈18 tajadas)", 3250, 65, 2.3, "Panadería", .ara),
+            it("arepas", "Arepas blancas De mi Casa", "und", 5, "paquete 400 g (≈5)", 1590, 160, 3, "Panadería", .ara),
+            it("tortillas", "Tortillas de harina Camote", "und", 12, "paquete 360 g (x12)", 5350, 95, 3, "Panadería", .ara),
+            it("verduras", "Vegetales mixtos congelados", "g", 500, "bolsa 500 g", 3500, 0.5, 0.025, "Congelados", .ara, false),
+            it("platano", "Plátano maduro", "und", 2, "500 g (≈2)", 2250, 300, 3, "Fruver", .ara),
+            it("papa", "Papa lavada", "g", 500, "500 g", 2450, 0.77, 0.02, "Fruver", .ara),
+            it("tomate", "Tomate chonto", "g", 500, "medio kilo", 3500, 0.18, 0.009, "Fruver", .ara),
+            it("cebolla", "Cebolla blanca", "g", 500, "medio kilo", 3200, 0.4, 0.011, "Fruver", .ara),
+            it("banano", "Banano", "und", 4, "500 g (≈4)", 2300, 105, 1.3, "Fruver", .ara),
+            it("aguacate", "Aguacate Hass", "und", 2, "500 g (≈2)", 5500, 240, 3, "Fruver", .ara),
+            it("zanahoria", "Zanahoria", "g", 500, "medio kilo", 2500, 0.4, 0.009, "Fruver", .ara),
+            it("limon", "Limón Tahití", "und", 10, "500 g (≈10)", 3100, 15, 0.3, "Fruver", .ara),
         ]
         return Dictionary(uniqueKeysWithValues: list.map { ($0.id, $0) })
     }()
@@ -123,6 +124,10 @@ enum Catalog {
           [("avena", 60), ("leche", 250), ("banano", 1), ("mani", 15)],
           ["Pon la avena y la leche en un tazón grande.", "Microondas 2 min, revuelve, 1 min más.", "Encima: banano en rodajas y una cucharada de maní."],
           tip: "Si la dejas lista en la noche en un frasco (sin calentar), en la mañana solo la comes."),
+        r("pancakeavena", "Pancakes de avena y banano", [.des], 10,
+          [("avena", 60), ("banano", 1), ("huevos", 1), ("leche", 60)],
+          ["Licúa la avena, el banano, el huevo y la leche hasta que quede una masa.", "Vierte porciones en una sartén caliente con muy poco aceite.", "Voltea cuando salgan burbujas, 1 min por lado.", "Encima: rodajas de banano o una cucharada de maní."],
+          tip: "Desayuno barato que llena y no lleva harina. El huevo solo sirve para unir la masa."),
         r("pericos", "Huevos pericos con arepa", [.des], 10,
           [("huevos", 3), ("tomate", 60), ("cebolla", 30), ("arepas", 2), ("aceite", 5)],
           ["Pica tomate y cebolla pequeño.", "Sofríe 3 min con un chorrito de aceite y sal.", "Agrega los huevos batidos y revuelve hasta que cuajen.", "Calienta las arepas en la misma sartén."],
@@ -136,16 +141,20 @@ enum Catalog {
         r("sandatun", "Sándwich de atún", [.des, .mer], 5,
           [("pan", 2), ("atun", 1), ("tomate", 40), ("cebolla", 15), ("limon", 0.5)],
           ["Escurre el atún y mézclalo con cebolla picada fina, limón y sal.", "Ponlo en el pan con rodajas de tomate.", "Si quieres, tuéstalo 1 min por lado."],
-          tip: "Tiene 35 g de proteína y no tienes que cocinar nada."),
+          tip: "Mucha proteína y no tienes que cocinar nada."),
         r("sandpollo", "Sándwich de pollo y queso", [.des, .mer], 5,
           [("pan", 2), ("pollo", 100), ("queso", 30), ("tomate", 30)],
           ["Usa pollo del lote, desmechado o en tiras.", "Arma el sándwich con queso y tomate.", "Tuéstalo en la sartén 1 min por lado para que el queso se derrita."]),
+        r("arepatun", "Arepa rellena de atún", [.des, .mer], 6,
+          [("arepas", 1), ("atun", 1), ("tomate", 30), ("limon", 0.5)],
+          ["Calienta la arepa y ábrela por la mitad.", "Mezcla el atún escurrido con tomate picado, limón y sal.", "Rellena la arepa."],
+          tip: "Merienda alta en proteína sin encender la estufa."),
         r("batido", "Batido ganador", [.mer, .des], 3,
           [("leche", 300), ("avena", 40), ("banano", 1), ("mani", 20)],
           ["Todo a la licuadora 40 segundos.", "Tómalo después del gimnasio o a media tarde."],
           tip: "Son unas 550 kcal en un vaso. Es la forma más fácil de llegar a tus calorías sin cocinar."),
-        r("yogurav", "Yogur griego con avena y banano", [.mer], 2,
-          [("yogur", 150), ("avena", 30), ("banano", 1)],
+        r("yogurav", "Yogur con avena y banano", [.mer], 2,
+          [("yogur", 200), ("avena", 30), ("banano", 1)],
           ["Sirve el yogur, agrega la avena cruda y el banano picado."]),
         r("panmani", "Pan con maní y banano", [.mer], 2,
           [("pan", 2), ("mani", 20), ("banano", 1)],
@@ -157,33 +166,37 @@ enum Catalog {
           [("arroz", 110), ("pollo", 150), ("verduras", 80), ("cebolla", 25), ("aceite", 8)],
           ["Corta el pollo en cubos, sal y comino.", "Dóralo en una olla con aceite y cebolla, 6 min.", "Agrega el arroz, color y el doble de agua; tapa a fuego bajo 18 min.", "Los últimos 5 min agrega las verduras congeladas.", "Reparte en recipientes: nevera hasta 4 días."],
           tip: "Hazlo en olla grande para 3 o 4 porciones de una vez. Cocina pollo de más para los wraps y sándwiches."),
+        r("pechugaguisada", "Pechuga guisada con papa", [.plato], 30, batch: true,
+          [("pollo", 150), ("papa", 300), ("tomate", 60), ("cebolla", 30), ("zanahoria", 40), ("aceite", 5)],
+          ["Corta la pechuga en cubos, sal y comino.", "Dórala con aceite, 5 min.", "Agrega tomate, cebolla y zanahoria picados; sofríe 4 min.", "Echa la papa en cubos y agua que cubra; tapa 18 min hasta que la papa ablande.", "Reparte en recipientes: nevera hasta 4 días."],
+          tip: "Sírvela con arroz del lote. Queda jugosa y rinde para varios días."),
         r("lentejas", "Lentejas con arroz y maduro", [.plato], 35, batch: true,
           [("lentejas", 70), ("arroz", 100), ("platano", 0.5), ("zanahoria", 40), ("tomate", 40), ("cebolla", 25), ("aceite", 5)],
           ["Lava las lentejas (no necesitan remojo).", "Hogao: tomate, cebolla, ajo, sal, comino, 5 min.", "Agrega lentejas, zanahoria rallada y 3 veces su volumen de agua; 25 min a fuego medio.", "Mientras tanto, arroz aparte; el maduro al horno o airfryer 15 min."],
           tip: "Lentejas + arroz juntos dan proteína completa, y es de lo más barato del mercado."),
-        r("picadillo", "Carne molida con papa", [.plato], 30, batch: true,
-          [("carne", 125), ("papa", 300), ("tomate", 50), ("cebolla", 30), ("zanahoria", 40)],
-          ["Pela y corta la papa en cubos pequeños.", "Dora la carne con cebolla y tomate, 6 min.", "Agrega papa, zanahoria y un vaso de agua; tapa 15 min hasta que la papa ablande.", "Sal, comino y color al gusto."],
-          tip: "La carne molida de cerdo de ARA cuesta casi la mitad que la de res."),
         r("pastaatun", "Pasta con atún y tomate", [.plato], 15,
           [("pasta", 130), ("atun", 1), ("tomate", 80), ("cebolla", 30), ("aceite", 5)],
           ["Cocina la pasta 9 min en agua con sal.", "En una sartén: cebolla y tomate picados 5 min.", "Agrega el atún escurrido y mezcla con la pasta."]),
         r("wraps", "Wraps de pollo, queso y aguacate", [.plato], 10,
           [("tortillas", 2), ("pollo", 120), ("queso", 30), ("aguacate", 0.5), ("tomate", 40)],
           ["Saltea el pollo en tiras con sal y ajo, 7 min (o usa el del lote).", "Calienta las tortillas en la sartén.", "Rellena con pollo, queso, aguacate y tomate. Enrolla."]),
+        r("bowlpollo", "Bowl de arroz, pollo y aguacate", [.plato], 10,
+          [("arroz", 110), ("pollo", 120), ("aguacate", 0.5), ("tomate", 40)],
+          ["Calienta el arroz y el pollo del lote.", "Sírvelos en un tazón con aguacate y tomate en tajadas.", "Sal, limón y listo."],
+          tip: "Arma la bandeja con lo que cocinaste en lote: cero cocción."),
         r("arrozfrito", "Arroz frito con pollo", [.plato], 10,
           [("arroz", 110), ("pollo", 120), ("verduras", 100), ("aceite", 10)],
           ["Usa arroz ya cocido y pollo del lote.", "Saltea las verduras congeladas 4 min en aceite.", "Agrega el pollo en trocitos y el arroz; revuelve 3 min.", "Sal o salsa de soya."],
           tip: "Ideal para días sin tiempo: es la receta de rescate."),
-        r("bowl", "Bowl de arroz, huevo frito y aguacate", [.plato], 10,
+        r("bowlhuevo", "Bowl de arroz, huevo frito y aguacate", [.plato], 10,
           [("arroz", 110), ("huevos", 2), ("aguacate", 0.5), ("tomate", 40)],
           ["Calienta el arroz del lote.", "Fríe 2 huevos.", "Sirve con aguacate y tomate en tajadas, sal y limón."]),
         r("arrozhuevo", "Arroz frito con huevo revuelto", [.plato], 10,
           [("arroz", 110), ("huevos", 3), ("verduras", 100), ("aceite", 10)],
           ["Usa arroz ya cocido.", "Saltea las verduras congeladas 4 min en aceite.", "Agrega el arroz y empújalo a un lado; revuelve ahí los huevos.", "Mezcla todo; sal o salsa de soya."]),
         r("sardinas", "Sardinas con arroz y ensalada", [.plato], 10,
-          [("sardinas", 0.5), ("arroz", 110), ("tomate", 60), ("cebolla", 20), ("limon", 1)],
-          ["Calienta media lata de sardinas en su salsa.", "Ensalada: tomate y cebolla picados con limón y sal.", "Sirve con arroz del lote. Guarda la otra media lata para mañana."]),
+          [("sardinas", 1), ("arroz", 110), ("tomate", 60), ("cebolla", 20), ("limon", 1)],
+          ["Calienta la lata de sardinas en su salsa.", "Ensalada: tomate y cebolla picados con limón y sal.", "Sirve con arroz del lote."]),
         r("frijoles", "Fríjoles de lata con arroz y maduro", [.plato], 10,
           [("frijolata", 1), ("arroz", 110), ("platano", 0.5), ("aguacate", 0.25)],
           ["Calienta la lata de fríjoles en una olla pequeña, 4 min.", "Sirve con arroz del lote.", "Maduro en tajadas a la sartén o airfryer y un pedazo de aguacate."],
@@ -195,11 +208,11 @@ enum Catalog {
     static let defaultPlan: [[String: String]] = [
         ["avena", "arrozpollo", "manifruta", "lentejas"],
         ["pericos", "lentejas", "yogurav", "wraps"],
-        ["avena", "arrozpollo", "batido", "pastaatun"],
-        ["sandatun", "picadillo", "batido", "arrozfrito"],
-        ["pericos", "picadillo", "batido", "bowl"],
-        ["arepaqueso", "sardinas", "panmani", "frijoles"],
-        ["sandhuevo", "picadillo", "batido", "wraps"],
+        ["pancakeavena", "arrozpollo", "batido", "pastaatun"],
+        ["sandatun", "pechugaguisada", "batido", "bowlpollo"],
+        ["pericos", "pechugaguisada", "batido", "bowlhuevo"],
+        ["arepaqueso", "sardinas", "arepatun", "frijoles"],
+        ["sandhuevo", "pastaatun", "batido", "wraps"],
     ].map { d in
         ["des": d[0], "alm": d[1], "mer": d[2], "cen": d[3]]
     }

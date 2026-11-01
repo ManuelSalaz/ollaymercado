@@ -92,8 +92,7 @@ enum Catalog {
             it("mani", "Mantequilla de maní Mash (D1)", "g", 227, "frasco 227 g", 5990, 5.9, 0.25, "Despensa", .d1, false),
             it("manis", "Maní salado Tote", "g", 175, "bolsa 175 g", 6990, 5.9, 0.25, "Despensa", .ara),
             it("aceite", "Aceite vegetal Sonelo", "ml", 900, "botella 900 ml", 8990, 8.8, 0, "Despensa", .ara),
-            it("atun", "Atún lomos Costa Blanca", "lata", 1, "lata 170 g", 5950, 190, 40, "Enlatados", .ara),
-            it("sardinas", "Sardina Costa Blanca", "lata", 1, "lata 120 g", 6990, 250, 28, "Enlatados", .ara),
+            it("atun", "Atún en agua Van Camp's", "lata", 1, "2 latas de 80 g", 8990, 140, 34, "Enlatados", .ara),
             it("frijolata", "Fríjoles con tocino Cheflisto (D1)", "lata", 1, "lata 320 g", 2400, 400, 19, "Enlatados", .d1, false),
             it("pollo", "Pechuga de pollo", "g", 500, "bandeja 500 g", 8475, 1.2, 0.23, "Carnes", .ara),
             it("cerdo", "Pulpa de cerdo", "g", 500, "bandeja 500 g", 11990, 2.0, 0.18, "Carnes", .ara),
@@ -199,9 +198,6 @@ enum Catalog {
         r("arrozhuevo", "Arroz frito con huevo revuelto", [.plato], 10,
           [("arroz", 110), ("huevos", 3), ("verduras", 100), ("aceite", 10)],
           ["Usa arroz ya cocido.", "Saltea las verduras congeladas 4 min en aceite.", "Agrega el arroz y empújalo a un lado; revuelve ahí los huevos.", "Mezcla todo; sal o salsa de soya."]),
-        r("sardinas", "Sardinas con arroz y ensalada", [.plato], 10,
-          [("sardinas", 1), ("arroz", 110), ("tomate", 60), ("cebolla", 20), ("limon", 1)],
-          ["Calienta la lata de sardinas en su salsa.", "Ensalada: tomate y cebolla picados con limón y sal.", "Sirve con arroz del lote."]),
         r("frijoles", "Fríjoles de lata con arroz y maduro", [.plato], 10,
           [("frijolata", 1), ("arroz", 110), ("platano", 0.5), ("aguacate", 0.25)],
           ["Calienta la lata de fríjoles en una olla pequeña, 4 min.", "Sirve con arroz del lote.", "Maduro en tajadas a la sartén o airfryer y un pedazo de aguacate."],
@@ -216,7 +212,7 @@ enum Catalog {
         ["pancakeavena", "arrozpollo", "batido", "pastaatun"],
         ["sandatun", "pechugaguisada", "batido", "bowlpollo"],
         ["pericos", "cerdosudado", "batido", "bowlhuevo"],
-        ["arepaqueso", "sardinas", "arepatun", "frijoles"],
+        ["arepaqueso", "pastaatun", "arepatun", "frijoles"],
         ["sandhuevo", "pastaatun", "batido", "wraps"],
     ].map { d in
         ["des": d[0], "alm": d[1], "mer": d[2], "cen": d[3]]

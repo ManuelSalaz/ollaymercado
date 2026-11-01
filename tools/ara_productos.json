@@ -1,0 +1,94 @@
+{
+ "leche": {
+  "araId": "12301-7707222551138",
+  "query": "leche"
+ },
+ "queso": {
+  "araId": "12033-7702129015455",
+  "query": "queso"
+ },
+ "arroz": {
+  "araId": "10060-7704269009691",
+  "query": "arroz"
+ },
+ "pasta": {
+  "araId": "19016-7702020061506",
+  "query": "pasta"
+ },
+ "manis": {
+  "araId": "1602-7704269101456",
+  "query": "mani"
+ },
+ "aceite": {
+  "araId": "800-2000000041766",
+  "query": "aceite"
+ },
+ "atun": {
+  "araId": "19760-7702367292717",
+  "query": "atun"
+ },
+ "pollo": {
+  "araId": "13591-2970819000004",
+  "query": "pollo"
+ },
+ "cerdo": {
+  "araId": "18405-2910782000007",
+  "query": "cerdo"
+ },
+ "pan": {
+  "araId": "21759-7704269746909",
+  "query": "pan tajado"
+ },
+ "arepas": {
+  "araId": "7045-7704269381223",
+  "query": "arepas"
+ },
+ "tortillas": {
+  "araId": "11133-7704269116702",
+  "query": "tortillas"
+ },
+ "platano": {
+  "araId": "18537-2821123000000",
+  "query": "platano"
+ },
+ "papa": {
+  "araId": "18751-2821148000000",
+  "query": "papa"
+ },
+ "tomate": {
+  "araId": "18146-2821036000000",
+  "query": "tomate"
+ },
+ "cebolla": {
+  "araId": "18152-2821032000000",
+  "query": "cebolla"
+ },
+ "banano": {
+  "araId": "4784-2820427000000",
+  "query": "banano"
+ },
+ "aguacate": {
+  "araId": "18170-2821004000000",
+  "query": "aguacate"
+ },
+ "zanahoria": {
+  "araId": "18164-2821007000000",
+  "query": "zanahoria"
+ },
+ "limon": {
+  "araId": "18194-2821050000000",
+  "query": "limon"
+ },
+ "avena": {
+  "araId": "14779-7704269437623",
+  "query": "avena"
+ },
+ "huevos": {
+  "araId": "5954-2000000004860",
+  "query": "huevos"
+ },
+ "yogur": {
+  "araId": "16731-7702879980140",
+  "query": "yogur"
+ }
+}

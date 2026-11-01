@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 
@@ -64,7 +65,7 @@ def precios_red(carpeta):
     auth, base, key = sesion(carpeta)
 
     def consulta(araId, query):
-        url = f"{base}/products-search?query={urllib.parse.quote(query)}&storeId=default-store&key={key}&limit=25"
+        url = f"{base}/products-search?query={urllib.parse.quote(query)}&storeId=default-store&key={key}&limit=30"
         req = urllib.request.Request(url, headers={"Authorization": auth, "Accept": "application/json",
                                                     "User-Agent": "OllaYMercado/actualizador"})
         with urllib.request.urlopen(req, timeout=20) as r:
@@ -101,7 +102,9 @@ def main():
     texto = open(CATALOGO, encoding="utf-8").read()
 
     cambios, iguales, fallos = [], 0, []
-    for item, info in sorted(mapa.items()):
+    for i, (item, info) in enumerate(sorted(mapa.items())):
+        if i and not args.demo:
+            time.sleep(1.5)  # suave con el servidor de ARA, para no toparse el límite (429)
         try:
             nuevo = consulta(info["araId"], info["query"])
         except Exception as e:

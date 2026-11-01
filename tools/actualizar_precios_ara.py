@@ -64,7 +64,7 @@ def precios_red(carpeta):
     auth, base, key = sesion(carpeta)
 
     def consulta(araId, query):
-        url = f"{base}/products-search?query={urllib.parse.quote(query)}&storeId=default-store&key={key}&limit=15"
+        url = f"{base}/products-search?query={urllib.parse.quote(query)}&storeId=default-store&key={key}&limit=25"
         req = urllib.request.Request(url, headers={"Authorization": auth, "Accept": "application/json",
                                                     "User-Agent": "OllaYMercado/actualizador"})
         with urllib.request.urlopen(req, timeout=20) as r:

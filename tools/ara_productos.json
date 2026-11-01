@@ -21,7 +21,7 @@
  },
  "aceite": {
   "araId": "800-2000000041766",
-  "query": "aceite"
+  "query": "sonelo"
  },
  "atun": {
   "araId": "19760-7702367292717",
@@ -37,7 +37,7 @@
  },
  "pan": {
   "araId": "21759-7704269746909",
-  "query": "pan tajado"
+  "query": "amapan"
  },
  "arepas": {
   "araId": "7045-7704269381223",
@@ -53,7 +53,7 @@
  },
  "papa": {
   "araId": "18751-2821148000000",
-  "query": "papa"
+  "query": "papa lavada"
  },
  "tomate": {
   "araId": "18146-2821036000000",
@@ -77,7 +77,7 @@
  },
  "limon": {
   "araId": "18194-2821050000000",
-  "query": "limon"
+  "query": "tahiti"
  },
  "avena": {
   "araId": "14779-7704269437623",
@@ -90,5 +90,9 @@
  "yogur": {
   "araId": "16731-7702879980140",
   "query": "yogur"
+ },
+ "quesotaj": {
+  "araId": "14713-7704269425545",
+  "query": "doble crema"
  }
 }

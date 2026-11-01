@@ -92,7 +92,7 @@ enum Catalog {
             it("pasta", "Espagueti Puglieri", "g", 400, "paquete 400 g", 2690, 3.6, 0.12, "Despensa", .ara),
             it("mani", "Mantequilla de maní Mash (D1)", "g", 227, "frasco 227 g", 5990, 5.9, 0.25, "Despensa", .d1, false),
             it("manis", "Maní salado Tote", "g", 175, "bolsa 175 g", 6990, 5.9, 0.25, "Despensa", .ara),
-            it("aceite", "Aceite vegetal Sonelo", "ml", 900, "botella 900 ml", 8990, 8.8, 0, "Despensa", .ara),
+            it("aceite", "Aceite de oliva Arrivare", "ml", 500, "botella 500 ml", 25250, 8.8, 0, "Despensa", .ara),
             it("atun", "Atún en agua Van Camp's", "lata", 1, "2 latas de 80 g", 8990, 140, 34, "Enlatados", .ara),
             it("frijolata", "Fríjoles con tocino Cheflisto (D1)", "lata", 1, "lata 320 g", 2400, 400, 19, "Enlatados", .d1, false),
             it("pollo", "Pechuga de pollo", "g", 500, "bandeja 500 g", 8475, 1.2, 0.23, "Carnes", .ara),

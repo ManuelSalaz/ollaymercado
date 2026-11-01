@@ -81,7 +81,7 @@ enum Catalog {
     // porque ARA no vende esos productos (lentejas, avena barata, maní, fríjol en lata).
     static let items: [String: Item] = {
         let list: [Item] = [
-            it("huevos", "Huevos tipo A (cubeta x30)", "und", 30, "cubeta x30", 13990, 72, 6.3, "Huevos y lácteos", .ara),
+            it("huevos", "Huevos tipo A (cubeta x30)", "und", 30, "cubeta x30", 14490, 72, 6.3, "Huevos y lácteos", .ara),
             it("leche", "Leche entera Betania", "ml", 900, "bolsa 900 ml", 4450, 0.62, 0.032, "Huevos y lácteos", .ara),
             it("yogur", "Yogurt entero Colfrance", "ml", 1000, "bolsa 1 L", 6990, 0.62, 0.032, "Huevos y lácteos", .ara),
             it("queso", "Queso blanco Colanta", "g", 250, "bloque 250 g", 8590, 3.0, 0.18, "Huevos y lácteos", .ara),
@@ -100,12 +100,12 @@ enum Catalog {
             it("arepas", "Arepas blancas De mi Casa", "und", 5, "paquete 400 g (≈5)", 1590, 160, 3, "Panadería", .ara),
             it("tortillas", "Tortillas de harina Camote", "und", 12, "paquete 360 g (x12)", 5350, 95, 3, "Panadería", .ara),
             it("verduras", "Vegetales mixtos congelados", "g", 500, "bolsa 500 g", 3500, 0.5, 0.025, "Congelados", .ara, false),
-            it("platano", "Plátano maduro", "und", 2, "500 g (≈2)", 2250, 300, 3, "Fruver", .ara),
+            it("platano", "Plátano maduro", "und", 2, "500 g (≈2)", 2450, 300, 3, "Fruver", .ara),
             it("papa", "Papa lavada", "g", 500, "500 g", 2450, 0.77, 0.02, "Fruver", .ara),
-            it("tomate", "Tomate chonto", "g", 500, "medio kilo", 3500, 0.18, 0.009, "Fruver", .ara),
+            it("tomate", "Tomate chonto", "g", 500, "medio kilo", 3800, 0.18, 0.009, "Fruver", .ara),
             it("cebolla", "Cebolla blanca", "g", 500, "medio kilo", 3200, 0.4, 0.011, "Fruver", .ara),
             it("banano", "Banano", "und", 4, "500 g (≈4)", 2300, 105, 1.3, "Fruver", .ara),
-            it("aguacate", "Aguacate Hass", "und", 2, "500 g (≈2)", 5500, 240, 3, "Fruver", .ara),
+            it("aguacate", "Aguacate Hass", "und", 2, "500 g (≈2)", 5900, 240, 3, "Fruver", .ara),
             it("zanahoria", "Zanahoria", "g", 500, "medio kilo", 2500, 0.4, 0.009, "Fruver", .ara),
             it("limon", "Limón Tahití", "und", 10, "500 g (≈10)", 3100, 15, 0.3, "Fruver", .ara),
         ]
